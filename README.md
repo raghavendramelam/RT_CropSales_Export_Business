@@ -94,17 +94,14 @@ A production-grade backend system developed for **Raghava Traders**, a South Ind
 
 ---
 
-## 📸 Screenshots & Demo (Optional)
-*Include if available: screenshots of APIs in action, Postman responses, database view, AWS instance, etc.*
 
----
 
 ## 👤 Author
 
 **Raghavendra Melam**  
 📧 melamraghava58@gmail.com  
 📍 Hammond, IN, USA  
-🌐 [LinkedIn](https://linkedin.com/in/your-profile) | [GitHub](https://github.com/your-github)
+🌐 [LinkedIn](https://linkedin.com/in/your-profile) | [GitHub](https://github.com/your-github) | [Portfolio](https://raghavamelam.netlify.app/)
 
 ---
 
