@@ -101,7 +101,7 @@ A production-grade backend system developed for **Raghava Traders**, a South Ind
 **Raghavendra Melam**  
 📧 melamraghava58@gmail.com  
 📍 Hammond, IN, USA  
-🌐 [LinkedIn]([https://linkedin.com/in/your-profile](https://www.linkedin.com/in/raghavendra-melam-3103b622a/)) | [GitHub]([https://github.com/your-github](https://github.com/raghavendramelam)) | [Portfolio](https://raghavamelam.netlify.app/)
+🌐 [LinkedIn](https://www.linkedin.com/in/raghavendra-melam-3103b622a/) | [GitHub]((https://github.com/raghavendramelam)) | [Portfolio](https://raghavamelam.netlify.app/)
 
 ---
 
