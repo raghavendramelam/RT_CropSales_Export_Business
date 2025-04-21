@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h2 { color: #2e6c80; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        td, th { border: 1px solid #aaa; padding: 8px; }
+    </style>
+</head>
+<body>
+<h2>Crop Sale Receipt</h2>
+<p><strong>Name:</strong> <span th:text="${name}"></span></p>
+<p><strong>Mobile:</strong> <span th:text="${mobile}"></span></p>
+<p><strong>Location:</strong> <span th:text="${location}"></span></p>
+
+<table>
+    <tr><th>Crop Type</th><td th:text="${cropType}"></td></tr>
+    <tr><th>Total Bags</th><td th:text="${totalBags}"></td></tr>
+    <tr><th>Total Kgs</th><td th:text="${totalKgs}"></td></tr>
+    <tr><th>Rate Sold To</th><td th:text="${rateSoldTo}"></td></tr>
+    <tr><th>Commission</th><td th:text="${commission}"></td></tr>
+    <tr><th>Travelling Cost</th><td th:text="${travellingCost}"></td></tr>
+    <tr><th>Workers Cost</th><td th:text="${workersCost}"></td></tr>
+    <tr><th>Amount Taken Upfront</th><td th:text="${amountUpfront}"></td></tr>
+    <tr><th>Calculated Amount</th><td th:text="${calculatedAmount}"></td></tr>
+</table>
+</body>
+</html>
