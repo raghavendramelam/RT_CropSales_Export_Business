@@ -104,6 +104,16 @@ public class IServiceCustImpl implements  ICustService{
         return customerRepository.findAll(example,sort);
     }
 
+    @Override
+    public boolean updateColdStorage ( UpdatCustomerBinding updatCustomerBinding ) {
+        return false;
+    }
+
+    @Override
+    public int daysInAC ( Long mobile ) {
+        return 0;
+    }
+
     private Double calculateBilling(AmountBinding amountBinding, Customer customer) {
         if (amountBinding == null || customer == null) {
             throw new IllegalArgumentException("AmountBinding and Customer cannot be null");
