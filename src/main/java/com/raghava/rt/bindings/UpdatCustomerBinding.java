@@ -8,6 +8,7 @@ import java.time.LocalDate;
 public class UpdatCustomerBinding {
 
 
+    private String name;
     private Boolean crop_in_storage;
     private LocalDate storage_date;
     private String storage_name;

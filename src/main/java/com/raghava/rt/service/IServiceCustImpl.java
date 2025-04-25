@@ -72,13 +72,7 @@ public class IServiceCustImpl implements  ICustService{
     }
 
     @Override
-    public String updatedetails ( UpdatCustomerBinding updatCustomerBinding ) {
-        Customer customer
-                = new Customer();
-        BeanUtils.copyProperties(updatCustomerBinding,customer);
-        customerRepository.save(customer);
-        return "";
-    }
+
 
     public List<Customer> searchCustomers( CustomerSearchBinding binding) {
         Customer probe = new Customer();
@@ -106,11 +100,29 @@ public class IServiceCustImpl implements  ICustService{
 
     @Override
     public boolean updateColdStorage ( UpdatCustomerBinding updatCustomerBinding ) {
+    if(customerRepository.findByName(updatCustomerBinding.getName())){
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(updatCustomerBinding,customer);
+        customerRepository.save(customer);
+        return true;
+    }
+
         return false;
     }
 
     @Override
     public int daysInAC ( Long mobile ) {
+        int days;
+        Optional<Customer> byMobile = customerRepository.findByMobile(mobile);
+        if(byMobile.isPresent()){
+            Customer customer = byMobile.get();
+            LocalDate storageDate = customer.getStorage_date();
+
+            LocalDate present = LocalDate.now();
+          days= (int) ChronoUnit.DAYS.between(storageDate, present);
+
+return days;
+        }
         return 0;
     }
 

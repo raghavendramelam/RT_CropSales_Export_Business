@@ -1,18 +1,15 @@
 package com.raghava.rt.controller;
 
-import com.raghava.rt.bindings.AmountBinding;
-import com.raghava.rt.bindings.CustomerBinding;
-import com.raghava.rt.bindings.CustomerSearchBinding;
-import com.raghava.rt.bindings.ResultBinding;
+import com.raghava.rt.bindings.*;
 import com.raghava.rt.entity.Customer;
 import com.raghava.rt.service.ICustService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import java.text.DecimalFormat;
 import java.util.List;
 
 @RestController
@@ -46,5 +43,21 @@ public class CustController {
         }
 
         return ResponseEntity.ok(customers);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<String> update( @RequestBody UpdatCustomerBinding updatCustomerBinding ){
+
+        if(iCustService.updateColdStorage(updatCustomerBinding)){
+            return new ResponseEntity<>("Customer Details are updated",HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("Records not found",HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @PostMapping("/getDays")
+    public ResponseEntity<String> getDays( @PathVariable Long mobile ){
+
+        return new ResponseEntity<>("Days in Cold Storage "+iCustService.daysInAC(mobile),HttpStatus.FOUND);
     }
 }

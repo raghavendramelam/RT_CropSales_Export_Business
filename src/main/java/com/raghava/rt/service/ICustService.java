@@ -11,7 +11,7 @@ public interface ICustService {
 
     public ResultBinding calcuatedAmount( AmountBinding amountBinding );
 
-    public String updatedetails( UpdatCustomerBinding updatCustomerBinding );
+
     public List<Customer> searchCustomers( CustomerSearchBinding binding);
 
     public boolean updateColdStorage(UpdatCustomerBinding updatCustomerBinding);
