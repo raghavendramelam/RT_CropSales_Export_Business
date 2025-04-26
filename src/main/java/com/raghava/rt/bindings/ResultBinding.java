@@ -9,6 +9,7 @@ public class ResultBinding {
     private String name;
     private String location;
     private Long mobile;
+    private String email;
     private LocalDate crop_sold_date;
     private Double total_in_kgs;
     private Double rate_sold_to;

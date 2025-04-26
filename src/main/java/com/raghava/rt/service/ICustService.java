@@ -16,7 +16,8 @@ public interface ICustService {
 
     public boolean updateColdStorage(UpdatCustomerBinding updatCustomerBinding);
 
-    public int daysInAC(Long mobile);
+    public String daysInACandCost(Long mobile);
 
 
+    public void sendReceiptAsEmail(String toEmail, String subject, String body);
 }

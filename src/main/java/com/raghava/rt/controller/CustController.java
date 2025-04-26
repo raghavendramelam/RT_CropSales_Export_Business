@@ -58,6 +58,13 @@ public class CustController {
     @PostMapping("/getDays")
     public ResponseEntity<String> getDays( @PathVariable Long mobile ){
 
-        return new ResponseEntity<>("Days in Cold Storage "+iCustService.daysInAC(mobile),HttpStatus.FOUND);
+        return new ResponseEntity<>("Days in Cold Storage "+iCustService.daysInACandCost(mobile),HttpStatus.FOUND);
+    }
+
+    @PostMapping("/email")
+    public ResponseEntity<String> sendReceiptEmail(@RequestBody ResultBinding resultBinding) {
+        String body = "Receipt Details:\n" + resultBinding.toString(); // or format it nicely
+        iCustService.sendReceiptAsEmail(resultBinding.getEmail(), "Your Receipt", body);
+        return ResponseEntity.ok("Receipt sent via email successfully!");
     }
 }

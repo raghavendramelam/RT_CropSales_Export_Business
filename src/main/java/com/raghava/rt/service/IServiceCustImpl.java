@@ -4,9 +4,12 @@ import com.raghava.rt.bindings.*;
 import com.raghava.rt.entity.Customer;
 import com.raghava.rt.repository.CustomerRepository;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Sort;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,6 +20,8 @@ import java.util.Optional;
 @Service
 public class IServiceCustImpl implements  ICustService{
 
+    @Autowired
+    private JavaMailSender mailSender;
     private final CustomerRepository customerRepository;
     public IServiceCustImpl(CustomerRepository customerRepository){
         this.customerRepository=customerRepository;
@@ -111,19 +116,32 @@ public class IServiceCustImpl implements  ICustService{
     }
 
     @Override
-    public int daysInAC ( Long mobile ) {
-        int days;
+    public String daysInACandCost ( Long mobile ) {
+
         Optional<Customer> byMobile = customerRepository.findByMobile(mobile);
         if(byMobile.isPresent()){
             Customer customer = byMobile.get();
             LocalDate storageDate = customer.getStorage_date();
 
             LocalDate present = LocalDate.now();
-          days= (int) ChronoUnit.DAYS.between(storageDate, present);
 
-return days;
+            long days_kept=  ChronoUnit.DAYS.between(storageDate, present);
+            double storageCost=  (days_kept*customer.getStorage_amount_per_day());
+
+return " Customer "+customer.getName()+" kept his crop in cold storage for "+days_kept+" and the cost will be "+storageCost;
         }
-        return 0;
+        return " Invalid Mobile number";
+    }
+
+    @Override
+    public void sendReceiptAsEmail ( String toEmail, String subject, String body ) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("your-email@example.com");
+        message.setTo(toEmail);
+        message.setSubject(subject);
+        message.setText(body);
+
+        mailSender.send(message);
     }
 
     private Double calculateBilling(AmountBinding amountBinding, Customer customer) {
