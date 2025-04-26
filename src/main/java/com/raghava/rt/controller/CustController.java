@@ -58,7 +58,7 @@ public class CustController {
     @PostMapping("/getDays")
     public ResponseEntity<String> getDays( @PathVariable Long mobile ){
 
-        return new ResponseEntity<>("Days in Cold Storage "+iCustService.daysInACandCost(mobile),HttpStatus.FOUND);
+        return new ResponseEntity<>("Days in Cold Storage and total cost from initial day "+iCustService.daysInACandCost(mobile),HttpStatus.FOUND);
     }
 
     @PostMapping("/email")
